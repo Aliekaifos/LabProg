@@ -1,11 +1,13 @@
 # LLAMADA A GITHUB API
+# KEILA CABALLERO
 import requests
-
 import json
 import time
 
+# La Función hace 2 llamadas por usuario
+# La segunda llamada en basada en la primera
 def llamadas_api(user,llamada):
-    # LLAMADA 1
+    # LLAMADA 1 -- Información de un Usuario
     url = "https://api.github.com/users/" + user + "/repos"
     response = requests.get(url)
     data = json.loads(response.content)
@@ -14,7 +16,7 @@ def llamadas_api(user,llamada):
     #print(data)
     #print(type(data))
 
-
+    # Recopilación Importante de la Llamada
     print("----LLAMADA" + str(llamada) + "----")
     repo = 1
     for i in range(0, len(data)):
@@ -29,6 +31,7 @@ def llamadas_api(user,llamada):
         print()
         repo += 1
 
+    # LLAMADA
     llamada += 1
     listadata2 = []
     for i in range(0, len(data)):
